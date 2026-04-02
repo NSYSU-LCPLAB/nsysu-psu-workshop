@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Semiconductor Technologies & Photonics Workshop | NSYSU–PSU</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0a1628;--deep:#0d1f3c;--accent:#c8a84b;--gold:#e8c96d;--muted:#8a9bb5;--white:#fafaf8;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--navy);color:var(--white);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(10,22,40,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(200,168,75,0.15);transition:all 0.3s;}
+  .nav-brand{font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;}
+  .nav-links{display:flex;gap:2.5rem;list-style:none;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--accent);}
+  .nav-cta{background:var(--accent)!important;color:var(--navy)!important;padding:0.5rem 1.4rem;border-radius:2px;font-weight:500!important;}
+  .hero{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;padding:8rem 4rem 4rem;}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(26,58,110,0.5) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 20% 70%,rgba(200,168,75,0.1) 0%,transparent 50%),linear-gradient(170deg,#0a1628 0%,#0d1f3c 50%,#091220 100%);}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(200,168,75,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(200,168,75,0.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 80%);}
+  .orb{position:absolute;border-radius:50%;filter:blur(80px);animation:drift 8s ease-in-out infinite alternate;}
+  .orb-1{width:500px;height:500px;background:rgba(26,58,110,0.4);top:-10%;right:-5%;}
+  .orb-2{width:300px;height:300px;background:rgba(200,168,75,0.08);bottom:10%;left:5%;animation-delay:-3s;}
+  .orb-3{width:200px;height:200px;background:rgba(100,150,255,0.1);top:40%;right:20%;animation-delay:-5s;}
+  @keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(20px,-30px) scale(1.05);}}
+  .hero-content{position:relative;z-index:2;text-align:center;max-width:1000px;}
+  .edition-badge{display:inline-flex;align-items:center;gap:0.6rem;background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.3);color:var(--accent);font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.5rem 1.2rem;border-radius:2px;margin-bottom:2rem;animation:fadeUp 0.8s ease both;}
+  .edition-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s ease infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.8);}}
+  .hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,7vw,6rem);line-height:1.05;margin-bottom:0.5rem;animation:fadeUp 0.8s ease 0.1s both;}
+  .hero-title em{font-style:italic;color:var(--accent);}
+  .hero-subtitle{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.2rem,2.5vw,1.8rem);color:var(--muted);margin-bottom:0.4rem;animation:fadeUp 0.8s ease 0.15s both;}
+  .hero-chinese{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2vw,1.4rem);color:rgba(200,168,75,0.7);margin-bottom:3rem;animation:fadeUp 0.8s ease 0.2s both;}
+  .hero-meta{display:flex;justify-content:center;gap:3rem;margin-bottom:3rem;animation:fadeUp 0.8s ease 0.3s both;flex-wrap:wrap;}
+  .meta-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem;}
+  .meta-value{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--white);}
+  .meta-divider{width:1px;background:rgba(200,168,75,0.2);align-self:stretch;}
+  .hero-actions{display:flex;gap:1rem;justify-content:center;animation:fadeUp 0.8s ease 0.4s both;flex-wrap:wrap;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+  .btn-primary{display:inline-flex;align-items:center;gap:0.5rem;background:var(--accent);color:var(--navy);text-decoration:none;font-weight:500;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.9rem 2.2rem;border-radius:2px;transition:all 0.25s;}
+  .btn-primary:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 8px 30px rgba(200,168,75,0.25);}
+  .btn-secondary{display:inline-flex;align-items:center;gap:0.5rem;border:1px solid rgba(200,168,75,0.4);color:var(--accent);text-decoration:none;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.9rem 2.2rem;border-radius:2px;transition:all 0.25s;}
+  .btn-secondary:hover{background:rgba(200,168,75,0.08);transform:translateY(-2px);}
+  .stats-bar{border-top:1px solid rgba(200,168,75,0.1);border-bottom:1px solid rgba(200,168,75,0.1);background:rgba(13,31,60,0.6);}
+  .stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+  .stat-item{padding:2rem;text-align:center;border-right:1px solid rgba(200,168,75,0.1);}
+  .stat-item:last-child{border-right:none;}
+  .stat-number{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--accent);line-height:1;margin-bottom:0.3rem;}
+  .stat-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+  section{padding:6rem 4rem;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-tag{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.8rem;}
+  .section-tag::before{content:'';display:block;width:24px;height:1px;background:var(--accent);}
+  .section-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;margin-bottom:1.5rem;}
+  #about{background:linear-gradient(180deg,var(--navy) 0%,var(--deep) 100%);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+  .about-text p{color:rgba(240,236,227,0.75);line-height:1.85;margin-bottom:1.2rem;font-size:0.95rem;}
+  .about-text p.lead{font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--white);font-weight:300;line-height:1.6;}
+  .timeline-item{display:flex;gap:1.5rem;padding:1.5rem 0 1.5rem 1.8rem;border-left:1px solid rgba(200,168,75,0.2);position:relative;}
+  .timeline-item::before{content:'';position:absolute;left:-5px;top:50%;transform:translateY(-50%);width:9px;height:9px;border-radius:50%;background:var(--deep);border:2px solid rgba(200,168,75,0.4);}
+  .timeline-item.active::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 12px rgba(200,168,75,0.4);}
+  .timeline-year{font-family:'DM Mono',monospace;font-size:1.4rem;color:var(--accent);font-weight:500;min-width:60px;padding-top:0.1rem;}
+  .timeline-content h4{font-weight:500;font-size:0.9rem;margin-bottom:0.25rem;}
+  .timeline-content p{font-size:0.8rem;color:var(--muted);line-height:1.5;}
+  #themes{background:var(--deep);}
+  .themes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(200,168,75,0.08);border:1px solid rgba(200,168,75,0.08);}
+  .theme-card{background:var(--deep);padding:2.5rem;transition:all 0.3s;position:relative;overflow:hidden;}
+  .theme-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--accent);transform:scaleX(0);transition:transform 0.3s;}
+  .theme-card:hover{background:rgba(26,58,110,0.3);}
+  .theme-card:hover::after{transform:scaleX(1);}
+  .theme-number{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:0.15em;margin-bottom:0.8rem;}
+  .theme-card h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;margin-bottom:0.7rem;}
+  .theme-card p{font-size:0.82rem;color:var(--muted);line-height:1.65;}
+  #speakers{background:var(--navy);}
+  .track-header{display:flex;align-items:baseline;gap:1.2rem;margin:3.5rem 0 0.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(200,168,75,0.15);}
+  .track-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);background:rgba(200,168,75,0.1);border:1px solid rgba(200,168,75,0.25);padding:0.3rem 0.8rem;border-radius:2px;white-space:nowrap;}
+  .track-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;}
+  .speakers-group-title{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin:2.5rem 0 1.5rem;display:flex;align-items:center;gap:1rem;}
+  .speakers-group-title::after{content:'';flex:1;height:1px;background:rgba(200,168,75,0.15);}
+  .speakers-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:1rem;}
+  .speaker-card{background:rgba(13,31,60,0.5);border:1px solid rgba(200,168,75,0.08);padding:1.2rem 0.8rem 1.4rem;text-align:center;transition:all 0.3s;}
+  .speaker-card:hover{border-color:rgba(200,168,75,0.25);background:rgba(26,58,110,0.25);transform:translateY(-3px);}
+  .speaker-avatar{width:100px;height:100px;border-radius:50%;margin:0 auto 0.9rem;background:linear-gradient(135deg,rgba(26,58,110,0.8),rgba(200,168,75,0.2));border:2px solid rgba(200,168,75,0.2);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--accent);overflow:hidden;}
+  .speaker-card h4{font-size:0.83rem;font-weight:500;margin-bottom:0.3rem;line-height:1.3;}
+  .spk-title{font-size:0.68rem;color:var(--muted);line-height:1.4;}
+  .spk-uni{font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--accent);letter-spacing:0.1em;margin-top:0.4rem;text-transform:uppercase;}
+  .industry-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:1rem;}
+  .industry-card{background:rgba(13,31,60,0.5);border:1px solid rgba(200,168,75,0.08);padding:1.4rem 1rem;text-align:center;transition:all 0.3s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.4rem;min-height:100px;}
+  .industry-card:hover{border-color:rgba(200,168,75,0.25);background:rgba(26,58,110,0.25);transform:translateY(-3px);}
+  .industry-name{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:600;color:var(--white);letter-spacing:0.03em;}
+  .industry-speaker{font-size:0.71rem;color:var(--muted);line-height:1.5;}
+  .industry-tbd{font-size:0.62rem;color:rgba(200,168,75,0.5);font-family:'DM Mono',monospace;margin-top:0.2rem;}
+  #why{background:linear-gradient(180deg,var(--deep) 0%,var(--navy) 100%);}
+  .reasons-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:3rem;}
+  .reason-item{display:flex;gap:1.5rem;align-items:flex-start;}
+  .reason-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(200,168,75,0.2);line-height:1;min-width:50px;}
+  .reason-content h3{font-size:1rem;font-weight:500;margin-bottom:0.5rem;}
+  .reason-content p{font-size:0.83rem;color:var(--muted);line-height:1.65;}
+  #venue{background:var(--deep);}
+  .venue-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+  .venue-map{aspect-ratio:4/3;border:1px solid rgba(200,168,75,0.1);overflow:hidden;}
+  .venue-map iframe{width:100%;height:100%;border:none;}
+  .venue-info h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;margin-bottom:0.4rem;}
+  .venue-chinese{font-size:1rem;color:var(--muted);margin-bottom:1.5rem;}
+  .venue-detail-row{display:flex;gap:1rem;align-items:flex-start;margin-bottom:0.8rem;}
+  .detail-icon{width:16px;color:var(--accent);margin-top:2px;flex-shrink:0;}
+  .detail-text{font-size:0.85rem;color:rgba(240,236,227,0.75);line-height:1.5;}
+  .transport-list{margin-top:1.5rem;}
+  .transport-list h4{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+  .transport-item{display:flex;gap:1rem;padding:0.7rem 0;border-bottom:1px solid rgba(200,168,75,0.06);font-size:0.82rem;color:var(--muted);}
+  .transport-mode{font-weight:500;color:var(--white);min-width:80px;}
+  #register{background:var(--navy);position:relative;overflow:hidden;}
+  .register-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(200,168,75,0.05) 0%,transparent 70%);}
+  .register-content{position:relative;z-index:2;text-align:center;max-width:700px;margin:0 auto;}
+  .register-content .section-tag{justify-content:center;}
+  .register-content .section-tag::before{display:none;}
+  .register-content p{color:var(--muted);line-height:1.8;margin-bottom:2.5rem;font-size:0.95rem;}
+  #contact{background:var(--deep);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+  .contact-group h3{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;}
+  .contact-person strong{display:block;font-size:0.88rem;font-weight:500;margin-bottom:0.15rem;}
+  .contact-person span{display:block;font-size:0.78rem;color:var(--muted);margin-bottom:0.15rem;}
+  .contact-person a{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--accent);text-decoration:none;}
+  .contact-person a:hover{text-decoration:underline;}
+  /* LOGO BAR: white bg so logos show in original colors */
+  .logo-bar{padding:3rem 4rem;background:#000000;border-top:3px solid #c8a84b;}
+  .logo-bar-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;text-align:center;margin-bottom:2rem;}
+  .logo-bar-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:6rem;flex-wrap:wrap;}
+  .logo-item{display:flex;flex-direction:column;align-items:center;gap:0.8rem;}
+  .logo-item img{max-height:80px;max-width:200px;object-fit:contain;display:block;}
+  .logo-item span{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#555;}
+  footer{padding:1.8rem 4rem;background:var(--navy);border-top:1px solid rgba(200,168,75,0.1);display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:0.65rem;color:rgba(138,155,181,0.5);letter-spacing:0.1em;}
+  .fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.6s ease,transform 0.6s ease;}
+  .fade-in.visible{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){.fade-in{opacity:1;transform:none;transition:none;}}
+  @media (max-width:900px){
+    nav{padding:1rem 1.5rem;} .nav-links{display:none;}
+    section{padding:4rem 1.5rem;} .hero{padding:7rem 1.5rem 3rem;}
+    .about-grid,.venue-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+    .themes-grid{grid-template-columns:1fr;}
+    .reasons-grid{grid-template-columns:1fr;}
+    .speakers-grid,.industry-grid{grid-template-columns:repeat(2,1fr);}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .meta-divider{display:none;} .hero-meta{flex-wrap:wrap;gap:1.5rem;}
+    footer{flex-direction:column;gap:0.5rem;text-align:center;}
+    .logo-bar{padding:2.5rem 1.5rem;} .logo-bar-inner{gap:3rem;}
+    .track-header{flex-direction:column;gap:0.5rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-brand">NSYSU × PSU Workshop 2026</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#themes">Topics</a></li>
+    <li><a href="#speakers">Speakers</a></li>
+    <li><a href="#venue">Venue</a></li>
+    <li><a href="#register" class="nav-cta">Register</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+  <div class="hero-content">
+    <div class="edition-badge">3rd Edition · 2026</div>
+    <h1 class="hero-title">Semiconductor Technologies<br>&amp; <em>Photonics</em> Workshop</h1>
+    <p class="hero-subtitle">半導體暨光電研討會</p>
+    <p class="hero-chinese">National Sun Yat-sen University × Penn State University</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="meta-label">Date</div><div class="meta-value">May 21–22, 2026</div></div>
+      <div class="meta-divider"></div>
+      <div class="hero-meta-item"><div class="meta-label">Location</div><div class="meta-value">NSYSU, Kaohsiung</div></div>
+      <div class="meta-divider"></div>
+      <div class="hero-meta-item"><div class="meta-label">Format</div><div class="meta-value">In-Person · Free</div></div>
+    </div>
+    <div class="hero-actions">
+      <a href="#register" class="btn-primary">Register Now</a>
+      <a href="#about" class="btn-secondary">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar"><div class="stats-inner">
+  <div class="stat-item"><div class="stat-number">3rd</div><div class="stat-label">Annual Edition</div></div>
+  <div class="stat-item"><div class="stat-number">25+</div><div class="stat-label">Invited Speakers</div></div>
+  <div class="stat-item"><div class="stat-number">2</div><div class="stat-label">World-Class Universities</div></div>
+  <div class="stat-item"><div class="stat-number">Free</div><div class="stat-label">Open Registration</div></div>
+</div></div>
+
+<section id="about"><div class="section-inner"><div class="about-grid">
+  <div class="about-text fade-in">
+    <div class="section-tag">About the Workshop</div>
+    <h2 class="section-title">Three Years of Bridging<br>Two Continents</h2>
+    <p class="lead">What began as a landmark MOU signing between Penn State College of Engineering and NSYSU has evolved into one of the most anticipated bilateral workshops in semiconductor and photonics research.</p>
+    <p>Now returning to Kaohsiung for its third edition, the workshop brings together distinguished faculty from both institutions, industry leaders from Taiwan's semiconductor ecosystem, and emerging researchers — all under one roof at NSYSU.</p>
+    <p>Sessions span cutting-edge topics from advanced packaging and silicon photonics to optical computing and AI-integrated systems, with a unique blend of academic depth and industrial relevance that defines this series.</p>
+    <p>本次研討會延續 NSYSU 與 PSU 之學術交流精神，以三年為基礎，深化雙邊合作，探討半導體與光電領域之最新突破，並促進產學界的實質對話與合作機會。</p>
+  </div>
+  <div class="fade-in">
+    <div class="section-tag" style="margin-bottom:1.5rem;">Workshop History</div>
+    <div class="timeline-item"><div class="timeline-year">2024</div><div class="timeline-content"><h4>1st Edition — Kaohsiung, Taiwan</h4><p>Inaugural workshop at NSYSU following the PSU–NSYSU MOU signing. 9 PSU professors, NSYSU faculty &amp; industry leaders from TSMC, ASE, and more.</p></div></div>
+    <div class="timeline-item"><div class="timeline-year">2025</div><div class="timeline-content"><h4>2nd Edition — University Park, Pennsylvania</h4><p>The workshop moved to Penn State, expanding collaboration and bringing NSYSU researchers to PSU for joint sessions and lab visits.</p></div></div>
+    <div class="timeline-item active"><div class="timeline-year">2026</div><div class="timeline-content"><h4>3rd Edition — Back to Kaohsiung ✦</h4><p>Returning to NSYSU with expanded scope, deeper industry engagement, and a broadened international speaker lineup.</p></div></div>
+  </div>
+</div></div></section>
+
+<section id="themes"><div class="section-inner">
+  <div style="margin-bottom:3rem;" class="fade-in">
+    <div class="section-tag">Workshop Topics</div>
+    <h2 class="section-title">Key Research Themes</h2>
+  </div>
+  <div class="themes-grid fade-in">
+    <div class="theme-card"><div class="theme-number">01</div><h3>Advanced Semiconductor Packaging</h3><p>Heterogeneous integration, chiplet architectures, 3DIC, and wafer-level packaging technologies driving the post-Moore era.</p></div>
+    <div class="theme-card"><div class="theme-number">02</div><h3>Silicon Photonics &amp; Integrated Optics</h3><p>On-chip optical interconnects, photonic integrated circuits, and high-bandwidth communication for data centers and AI accelerators.</p></div>
+    <div class="theme-card"><div class="theme-number">03</div><h3>Optical Computing &amp; Neuromorphic Systems</h3><p>Photonic neural networks, optical reservoir computing, and all-optical signal processing for energy-efficient AI inference.</p></div>
+    <div class="theme-card"><div class="theme-number">04</div><h3>Wide-Bandgap &amp; Power Semiconductors</h3><p>GaN, SiC, and Ga₂O₃ devices for power electronics, RF applications, and high-frequency conversion in electrification and 6G.</p></div>
+    <div class="theme-card"><div class="theme-number">05</div><h3>Photonics Sensing &amp; Imaging</h3><p>Polarimetric imaging, LiDAR, structured light, and advanced sensing for autonomous vehicles, biomedical, and defense.</p></div>
+    <div class="theme-card"><div class="theme-number">06</div><h3>Metasurfaces &amp; Reconfigurable Optics</h3><p>Flat optics, active metasurfaces, liquid crystal RIS, and dynamic beam steering for 6G and AR/VR.</p></div>
+  </div>
+</div></section>
+
+<section id="speakers"><div class="section-inner">
+  <div class="fade-in"><div class="section-tag">Invited Speakers</div><h2 class="section-title">Distinguished Participants</h2></div>
+
+  <div class="track-header fade-in"><div class="track-label">Track I</div><h3 class="track-title">Semiconductor Technologies</h3></div>
+  <div class="speakers-group-title">Penn State University</div>
+  <div class="speakers-grid fade-in">
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/swaminathan.jpg" alt="Madhavan Swaminathan" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%;"></div><h4>Prof. Madhavan Swaminathan</h4><div class="spk-title">W.E. Leonhard Chair Professor &amp; Dept. Head, ECE</div><div class="spk-uni">PSU</div></div>
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/ning_li.jpg" alt="Ning Li" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%;"></div><h4>Prof. Ning Li</h4><div class="spk-title">Associate Professor of Electrical Engineering</div><div class="spk-uni">PSU</div></div>
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/daniel_lopez.jpg" alt="Daniel Lopez" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%;"></div><h4>Prof. Daniel Lopez</h4><div class="spk-title">Liang Professor of Electrical Engineering</div><div class="spk-uni">PSU</div></div>
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/q_zhang.jpg" alt="Qiming Zhang" style="width:100%;height:100%;object-fit:cover;object-position:center 18%;border-radius:50%;"></div><h4>Prof. Qiming Zhang</h4><div class="spk-title">Distinguished Professor of Electrical Engineering</div><div class="spk-uni">PSU</div></div>
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/wooram_lee.jpg" alt="Wooram Lee" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%;"></div><h4>Prof. Wooram Lee</h4><div class="spk-title">Associate Professor of Electrical Engineering</div><div class="spk-uni">PSU</div></div>
+  </div>
+
+  <div class="speakers-group-title">Industry Partners</div>
+  <div class="industry-grid fade-in">
+    <div class="industry-card"><div class="industry-name">TSMC</div><div class="industry-speaker">Dr. Chuei-Tang Wang<br>Director, APTS</div><div class="industry-tbd">To be confirmed</div></div>
+    <div class="industry-card"><div class="industry-name">MediaTek</div><div class="industry-speaker">Dr. C. M. Hung<br>R&amp;D Executive</div></div>
+    <div class="industry-card"><div class="industry-name">ASE</div><div class="industry-speaker">Dr. Vincent Lin<br>Corporate R&amp;D Director</div></div>
+    <div class="industry-card"><div class="industry-name">ASML</div><div class="industry-speaker">Dr. Chun-Kuan Chen<br>Senior Engineer</div></div>
+    <div class="industry-card"><div class="industry-name">BizLink</div><div class="industry-speaker">Dr. Simon Chen<br>CTO</div></div>
+    <div class="industry-card"><div class="industry-name">Corning</div><div class="industry-speaker">Speaker TBA</div><div class="industry-tbd">To be announced</div></div>
+    <div class="industry-card"><div class="industry-name" style="font-size:0.95rem;">Oxford Instruments</div><div class="industry-speaker">Speaker TBA</div><div class="industry-tbd">To be announced</div></div>
+  </div>
+
+  <div class="speakers-group-title">NSYSU</div>
+  <div class="speakers-grid fade-in">
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/albert_wang.jpg" alt="Chun-Ming Wang" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%;"></div><h4>Prof. Chun-Ming (Albert) Wang</h4><div class="spk-title">Professor, Inst. of Innovative Semiconductor Manufacturing</div><div class="spk-uni">NSYSU</div></div>
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/yeong_jyh_lin.png" alt="Yeong-Jyh Lin" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;border-radius:50%;"></div><h4>Prof. Yeong-Jyh Lin</h4><div class="spk-title">Associate Professor, Inst. of Advanced Semiconductor Packaging and Testing</div><div class="spk-uni">NSYSU</div></div>
+  </div>
+
+  <div class="track-header fade-in" style="margin-top:3rem;"><div class="track-label">Track II</div><h3 class="track-title">Photonics</h3></div>
+  <div class="speakers-group-title">Penn State University</div>
+  <div class="speakers-grid fade-in">
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/khoo.jpg" alt="Iam-Choon Khoo" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%;"></div><h4>Prof. Iam-Choon Khoo</h4><div class="spk-title">W.E. Leonhard Professor of Electrical Engineering</div><div class="spk-uni">PSU</div></div>
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/shizhuo.jpg" alt="Shizhuo Yin" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%;"></div><h4>Prof. Shizhuo Yin</h4><div class="spk-title">Professor of Electrical Engineering</div><div class="spk-uni">PSU</div></div>
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/xingjie.jpg" alt="Xingjie Ni" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%;"></div><h4>Prof. Xingjie Ni</h4><div class="spk-title">Associate Professor of Electrical Engineering</div><div class="spk-uni">PSU</div></div>
+  </div>
+
+  <div class="speakers-group-title">NSYSU</div>
+  <div class="speakers-grid fade-in">
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/tsung_hsien_lin.jpg" alt="Tsung-Hsien Lin" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;border-radius:50%;"></div><h4>Prof. Tsung-Hsien Lin</h4><div class="spk-title">Chair Professor, Dept. of Photonics</div><div class="spk-uni">NSYSU</div></div>
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/yi_jen_chiu.jpg" alt="Yi-Jen Chiu" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%;"></div><h4>Prof. Yi-Jen Chiu</h4><div class="spk-title">Professor, Dept. of Photonics</div><div class="spk-uni">NSYSU</div></div>
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/yung_jr_hung.jpg" alt="Yung-Jr Hung" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%;"></div><h4>Prof. Yung-Jr Hung</h4><div class="spk-title">Distinguished Professor, Dept. of Photonics</div><div class="spk-uni">NSYSU</div></div>
+    <div class="speaker-card"><div class="speaker-avatar"><img src="photos/yu_han_hung.jpg" alt="Yu-Han Hung" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;border-radius:50%;"></div><h4>Prof. Yu-Han Hung</h4><div class="spk-title">Assistant Professor, Dept. of Photonics</div><div class="spk-uni">NSYSU</div></div>
+  </div>
+</div></section>
+
+<section id="why"><div class="section-inner">
+  <div class="fade-in" style="text-align:center;max-width:600px;margin:0 auto 1rem;">
+    <div class="section-tag" style="justify-content:center;"><span>Why Attend</span></div>
+    <h2 class="section-title">Four Reasons to Join Us</h2>
+  </div>
+  <div class="reasons-grid fade-in">
+    <div class="reason-item"><div class="reason-num">01</div><div class="reason-content"><h3>World-Class Research Frontiers</h3><p>Hear directly from leading professors at Penn State and NSYSU on the latest breakthroughs in semiconductors, photonics, and optical computing.</p></div></div>
+    <div class="reason-item"><div class="reason-num">02</div><div class="reason-content"><h3>Direct Industry Access</h3><p>Engage with R&amp;D leaders from TSMC, ASE, MediaTek, ASML, and other global leaders. This workshop uniquely bridges academic discovery and industrial application.</p></div></div>
+    <div class="reason-item"><div class="reason-num">03</div><div class="reason-content"><h3>International Networking</h3><p>Build lasting connections with researchers and engineers from two continents. Past editions have sparked joint publications, student exchanges, and collaborative grants.</p></div></div>
+    <div class="reason-item"><div class="reason-num">04</div><div class="reason-content"><h3>Completely Free to Attend</h3><p>Open to academia and industry professionals alike. No registration fee — register, show up, and be part of this milestone third edition at NSYSU in Kaohsiung.</p></div></div>
+  </div>
+</div></section>
+
+<section id="venue"><div class="section-inner"><div class="venue-grid">
+  <div class="venue-map fade-in">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.2!2d120.2628!3d22.6291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e04a987c3cde3%3A0x76b2cd0f9e3d2fb0!2sNational%20Sun%20Yat-sen%20University!5e0!3m2!1sen!2stw!4v1" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div class="venue-info fade-in">
+    <div class="section-tag">Venue</div>
+    <h3>Building of International Research</h3>
+    <p class="venue-chinese">國立中山大學 國際研究大樓 光中廳</p>
+    <div class="venue-detail-row">
+      <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <div class="detail-text">No. 70, Lianhai Rd, Gushan District,<br>Kaohsiung City 804, Taiwan</div>
+    </div>
+    <div class="venue-detail-row">
+      <svg class="detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <div class="detail-text">May 21–22, 2026</div>
+    </div>
+    <div class="transport-list">
+      <h4>Getting There</h4>
+      <div class="transport-item"><span class="transport-mode">By Air</span><span>~25–30 min from Kaohsiung International Airport by taxi</span></div>
+      <div class="transport-item"><span class="transport-mode">By HSR</span><span>~20–25 min from Zuoying HSR Station; "HSR Gushan" bus to NSYSU stop</span></div>
+      <div class="transport-item"><span class="transport-mode">By Train</span><span>~15–20 min from Kaohsiung Main Station; No. 99 or 248 bus to NSYSU</span></div>
+      <div class="transport-item"><span class="transport-mode">By Car</span><span>Freeway No.1 → Zhongzheng Interchange → Dagon Rd → Lianhai Rd → NSYSU</span></div>
+    </div>
+  </div>
+</div></div></section>
+
+<section id="register">
+  <div class="register-bg"></div>
+  <div class="section-inner"><div class="register-content fade-in">
+    <div class="section-tag">Registration</div>
+    <h2 class="section-title" style="margin-bottom:1rem;">席位有限，即刻報名<br>Limited Seats Available</h2>
+    <p>This workshop is free and open to researchers, graduate students, and industry professionals. Seating is limited — register early to secure your place at one of the most important bilateral semiconductor and photonics workshops in the Asia-Pacific region.</p>
+    <div class="hero-actions"><a href="https://docs.google.com/forms/d/e/1FAIpQLSe2-AVBVeovzxPZIqLoH5PQ7n6g7OZq5kds6Om2xjGxGF5GHw/viewform?usp=dialog" target="_blank" class="btn-primary">Register Here (Google Form)</a></div>
+  </div></div>
+</section>
+
+<section id="contact"><div class="section-inner">
+  <div class="section-tag" style="margin-bottom:2rem;">Contact</div>
+  <div class="contact-grid fade-in">
+    <div class="contact-group">
+      <h3>NSYSU Organizer</h3>
+      <div class="contact-person">
+        <strong>Prof. Tsung-Hsien Lin 林宗賢 教授</strong>
+        <span>Chair Professor &amp; VP for Research and Development</span>
+        <span>Department of Photonics, NSYSU</span>
+        <a href="/cdn-cgi/l/email-protection#5c363d31392f3035321c313d353072322f252f297239382972282b"><span class="__cf_email__" data-cfemail="b6dcd7dbd3c5dadfd8f6dbd7dfda98d8c5cfc5c398d3d2c398c2c1">[email&#160;protected]</span></a>
+      </div>
+    </div>
+    <div class="contact-group">
+      <h3>Penn State Organizer</h3>
+      <div class="contact-person">
+        <strong>Prof. Madhavan Swaminathan</strong>
+        <span>W. E. Leonhard Chair Professor &amp; Dept. Head</span>
+        <span>Penn State University</span>
+        <a href="/cdn-cgi/l/email-protection#305d464307020409704043451e555445"><span class="__cf_email__" data-cfemail="523f24216560666b122221277c373627">[email&#160;protected]</span></a>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- LOGO BAR: white background ensures logos render correctly in all browsers -->
+<div class="logo-bar">
+  <div class="logo-bar-label">Organized by</div>
+  <div class="logo-bar-inner">
+    <div class="logo-item">
+      <img src="photos/nsysu_logo.png" alt="National Sun Yat-sen University">
+      <span>國立中山大學 NSYSU</span>
+    </div>
+    <div class="logo-item">
+      <img src="photos/psu_logo.png" alt="Penn State University">
+      <span>Penn State University</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 NSYSU–PSU Semiconductor Technologies &amp; Photonics Workshop</span>
+  <span>National Sun Yat-sen University · Kaohsiung, Taiwan</span>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function initAnimations() {
+    var els = document.querySelectorAll('.fade-in');
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+      els.forEach(function(el) { obs.observe(el); });
+    } else {
+      els.forEach(function(el) { obs.observe(el); });
+    } else {
+      els.forEach(function(el) { el.classList.add('visible'); });
+    }
+  }
+  document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', initAnimations) : initAnimations();
+  window.addEventListener('scroll', function() {
+    document.getElementById('navbar').style.padding = window.scrollY > 60 ? '0.8rem 4rem' : '1.2rem 4rem';
+  });
+</script>
+</body>
+</html>
